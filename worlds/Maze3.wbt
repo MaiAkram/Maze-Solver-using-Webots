@@ -1,0 +1,338 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5609749967442295 0.5553909772756586 0.6138793980812522 2.049295580989358
+  position -0.01166985155064193 -1.0611070472127917 11.831400662150218
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 5 5
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+Floor {
+  translation -1.5 2 0.01
+  size 1 0.5
+  appearance Parquetry {
+    type "light strip"
+    colorOverride 1 0 0
+  }
+}
+Robot {
+  translation 1.0000008385478463 -1.7499998518902726 0.007063128162871628
+  rotation -0.0018915063803720661 -4.1756624671618196e-05 0.9999982102283969 3.1399998012834023
+  children [
+    DEF cam Camera {
+      translation 0.175 0 0.05
+      rotation 0 1 0 1.57
+      name "cam"
+      boundingObject Box {
+        size 0.05 0.05 0.05
+      }
+      physics Physics {
+      }
+    }
+    DEF camera Camera {
+      translation 0.175 0 0.1
+      boundingObject Box {
+        size 0.05 0.05 0.05
+      }
+      physics Physics {
+      }
+    }
+    RangeFinder {
+      translation 0.175 0 0.075
+      name "rf0"
+      boundingObject DEF rf Box {
+        size 0.05 0.05 0.05
+      }
+      physics DEF rf Physics {
+      }
+      lens DEF rf0 Lens {
+      }
+    }
+    DEF ds3 DistanceSensor {
+      translation 0.175 -0.1 0.05
+      name "ds3"
+      boundingObject DEF ds Box {
+        size 0.05 0.05 0.05
+      }
+      physics DEF ds Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.1 1000 0
+        0.2 400 0
+        0.3 50 0
+      ]
+      type "sonar"
+    }
+    DEF ds4 DistanceSensor {
+      translation 0.175 0.1 0.05
+      name "ds4"
+      boundingObject DEF ds Box {
+        size 0.05 0.05 0.05
+      }
+      physics DEF ds Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.1 1000 0
+        0.2 400 0
+        0.3 50 0
+      ]
+      type "sonar"
+    }
+    DEF ds0 DistanceSensor {
+      translation 0.1 0.175 0.05
+      rotation 0 0 1 1.57
+      name "ds0"
+      boundingObject DEF ds Box {
+        size 0.05 0.05 0.05
+      }
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.1 1000 0
+        0.2 400 0
+        0.3 50 0
+      ]
+      type "sonar"
+    }
+    DEF ds1 DistanceSensor {
+      translation 0.1 -0.175 0.05
+      rotation 0 0 1 -1.57
+      name "ds1"
+      boundingObject DEF ds Box {
+        size 0.05 0.05 0.05
+      }
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.1 1000 0
+        0.2 400 0
+        0.3 50 0
+      ]
+      type "sonar"
+    }
+    DEF ds2 DistanceSensor {
+      translation 0.15 0 0.05
+      name "ds2"
+      boundingObject USE ds
+      physics Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.1 1000 0
+        0.2 400 0
+        0.3 50 0
+      ]
+      type "infra-red"
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2068.7150047601963
+        axis 0 1 0
+        anchor -0.01 -0.172 0.05
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+        }
+        DEF PosSen PositionSensor {
+          name "PS_1"
+        }
+      ]
+      endPoint Solid {
+        translation -0.009922191635753143 -0.172004342526082 0.050011968133336006
+        rotation -0.5865008632975416 0.5727401152872887 0.5727001813269678 2.0807533971002456
+        children [
+          DEF wheel_2 Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE wheel_2
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1556.4740078969758
+        axis 0 1 0
+        anchor -0.01 0.172 0.05
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+        DEF PosSen PositionSensor {
+          name "PS_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.00993067030401805 0.17199573491416187 0.05006764154212923
+        rotation 0.99703632688154 0.05441607649576023 -0.05438247417481632 1.5729146537778016
+        children [
+          USE wheel_2
+        ]
+        boundingObject DEF wheel Shape {
+          geometry Cylinder {
+            height 0.05
+            radius 0.05
+          }
+        }
+        physics Physics {
+        }
+      }
+    }
+    DEF Body Pose {
+      translation 0 0 0.0515
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.3 1
+            emissiveColor 0.1 0 1
+          }
+          geometry Box {
+            size 0.3 0.3 0.1
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "Maze_end"
+  linearVelocity -4.3414877811587704e-07 8.184394960287369e-10 5.7909203104096154e-05
+  angularVelocity -1.4607465584920144e-08 -7.881076241471171e-06 2.461754632974173e-09
+}
+DEF Exit_Wall Wall {
+  translation 0.375 2 0
+  size 3.25 0.05 0.5
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+DEF Right_Wall Wall {
+  translation 2 0 0
+  rotation 0 0 1 1.57
+  name "wall(1)"
+  size 4 0.05 0.5
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+DEF Left_Wall Wall {
+  translation -2 0 0
+  rotation 0 0 1 1.57
+  name "wall(2)"
+  size 4 0.05 0.5
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+DEF Start_Wall Wall {
+  translation -0.375 -2 0
+  name "wall(3)"
+  size 3.25 0.05 0.5
+  appearance Roughcast {
+    colorOverride 0.5 0.5 0.5
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation -1.25 -1.25 0
+  name "wall(4)"
+  size 1.5 0.05 0.5
+}
+Wall {
+  translation -1.25 1 0
+  name "wall(5)"
+  size 1.5 0.05 0.5
+}
+Wall {
+  translation 1.25 1.375 0
+  rotation 0 0 1 1.57
+  name "wall(6)"
+  size 1.25 0.05 0.5
+}
+Wall {
+  translation 1.125 -1.25 0
+  name "wall(7)"
+  size 1.75 0.05 0.5
+}
+Wall {
+  translation 0.25 -0.5 0
+  name "wall(8)"
+  size 2 0.05 0.5
+}
+Wall {
+  translation 0.75 1 0
+  name "wall(9)"
+  size 1 0.075 0.5
+}
+Wall {
+  translation -0.875 0.25 0
+  name "wall(10)"
+  size 0.75 0.05 0.5
+}
+Wall {
+  translation -1.25 0.75 0
+  rotation 0 0 1 1.57
+  name "wall(11)"
+  size 1 0.05 0.5
+}
+Wall {
+  translation -1.75 -0.5 0
+  name "wall(12)"
+  size 0.5 0.05 0.5
+}
+Wall {
+  translation 1.25 0.5 0
+  rotation 0 0 1 1.57
+  name "wall(13)"
+  size 0.5 0.05 0.5
+}
+Wall {
+  translation 0.75 0.25 0
+  name "wall(14)"
+  size 1 0.05 0.5
+}
